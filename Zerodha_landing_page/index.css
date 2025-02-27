@@ -1,0 +1,15 @@
+
+.buttoncls{
+    margin: 20px;
+    color: #666;
+    border: white;
+    background-color: white;
+    font-size: 22px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.logo{
+    margin: 20px;
+
+}

@@ -1,0 +1,55 @@
+<HTML> -> Optional - good to have
+<HEAD> -> Optional - For the Metadata
+<BODY> -> Optional - for the web page
+
+THis is automatically injected when we run the HTML file.
+
+
+<div> -> width occupied fully.
+<span> -> Takes space as much as it needs
+
+<h1> ..... <h6> -> Heading tags
+
+<p> -> Paragraph text
+
+<img> -> Add image to the file
+
+<center> -> Center of the page
+
+<a> -> Create a clickable link
+
+<input> -> To ask users input
+
+<b> -> To make the text bold
+
+<i> -> To makes the text italic
+
+<button> -> create a button
+
+
+Attributes - the key values that we used to define the tag behaviour
+
+
+
+CSS - Add style to the webpage and position the elements
+
+<div style = "color: green; background-color: aqua;"> Hi there </div>
+
+color: the element colour - text color changes
+
+background-color - the area span by element colour
+
+background - we can add anything in background
+
+Border-radius - To make the corner rounder
+
+Border - To create the border for the element
+
+padding/margin - Spaces - Padding - Add the space inside the element - Margin - Add spaces outside the element
+
+Box-shadow - Creates the shadow effect
+
+Font Size - to resize the text size
+
+For positions:
+
