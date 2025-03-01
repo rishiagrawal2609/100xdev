@@ -105,3 +105,5 @@ const users = [{
 console.log(maleAdult(users))
 
 
+
+
