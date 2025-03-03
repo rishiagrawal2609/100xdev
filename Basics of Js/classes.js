@@ -28,3 +28,12 @@ const rectangle = new Rectangle(2,3,"red")
 const area = rectangle.area()
 console.log(area)
 
+const now = new Date();
+
+console.log(now.getHours())
+
+const map = new Map();
+map.set("name","Rishi")
+map.set("age","23")
+
+console.log(map)
