@@ -5,7 +5,7 @@ var isStudent = true;
 console.log(name,age,isStudent)
 
 
-var isStu = true
+let isStu = true;
 console.log(isStu)
 isStu = "RIshi"
 console.log(isStu)
