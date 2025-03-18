@@ -1,10 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>To-DO</title>
 </head>
 <body>
-$END$
+<h1 class="todo">TO Do List</h1>
+<h4 class="todo"> 1. Study for exam</h4>
+<h4 class="todo"> 2. Get your meetings done</h4>
+<h4 class="todo"> 3. Go to Gym</h4>
+
+
+<div id="parentNode">
+    <p>The elements you can delete. Note that it deletes the child node to a parent node. it cannot delete itself</p>
+    <div id = "todo1">
+        <h4>Take class</h4>
+        <button onclick="DeleteToDo(1)"> Delete </button>
+    </div>
+    <div id = "todo2">
+        <h4>Go Gym</h4>
+        <button onclick="DeleteToDo(2)"> Delete </button>
+    </div>
+</div>
+
+
+<div id = "toDOList" style=" border: dot-dash #0e0e0e;">
+    <p>Functional TODO Application</p>
+</div>
+<div>
+    <label for="taskInput"></label><input type="text" id="taskInput" placeholder="Add a new task">
+    <button id="addTaskButton" onclick="createToDO()">Add Task</button>
+</div>
+
+<p> This number will update every second automatically</p>
+
+<h1 id="updateEverySec">0</h1>
+
+<script>
+    // We can define a class when we have to have same identifier for multiple elements.
+    //add id and make sure that is not repeated.
+    function addToDo() {
+        const inputUser = document.querySelector("input") //using query-selector - it will select the tag mentioned which appears first starting from the top.
+        const val = inputUser.value
+        console.log(val)
+    }
+
+    // To select all of them use querySelectorAll - will give you array for all the tags mentioned.
+    const allH4 = document.querySelectorAll("h4")
+    const h4s = allH4[2]
+    console.log(h4s)
+
+    // To select the specific tag, provide it the unique id that will work as a unique identifier, and you can select the element of choice
+    const btn = document.querySelector("#addTaskButton")
+    console.log(btn)
+
+    // Same can be done by getElementById
+    const bt = document.getElementById("addTaskButton")
+    console.log(bt)
+
+    //for the class
+
+    const h4sc = document.querySelector(".todo")
+    const allH4sc = document.querySelectorAll(".todo")
+    const otherAll = document.getElementsByClassName("todo")
+
+
+    //update the number every sec
+    async function numberAdd() {
+        let counter = Number(document.getElementById("updateEverySec").innerHTML)
+        setInterval(function () {
+            let num = document.getElementById("updateEverySec")
+            num.innerHTML = counter
+            counter += 1
+        }, 1000)
+    }
+
+    numberAdd()
+
+    let count = 3;
+
+    function DeleteToDo(index){
+        const element = document.getElementById("todo"+index)
+        element.parentNode.removeChild(element)
+        if(count <= 3){
+            count =3
+        }else{
+            count-=1
+        }
+        //element.getElementById("parentNode").removeChild(element) //Other Way to do this
+    }
+    //createElement will create the element outside the DOM, we have to insert in DOM using Append Child
+
+    function createToDO(){
+        const input = document.querySelector("#taskInput").value
+        const adddiv = document.createElement("div")
+        adddiv.setAttribute('id',`todo${count}`)
+        adddiv.innerHTML = `<h4>${count-2}. ${input}</h4>` +
+            `<button onclick="DeleteToDo(${count})"> Delete </button>`
+        document.querySelector("#toDOList").appendChild(adddiv)
+        count++
+    }
+</script>
 </body>
 </html>
