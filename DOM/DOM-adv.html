@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM-ADV</title>
+</head>
+<body>
+  <h1> To-DO list</h1>
+<div id="todo">
+</div>
+<div>
+  <input id="userInput">
+  <button onclick="addTodo()">Add</button>
+</div>
+<script>
+
+  let count = 0;
+
+  function deleteTodo(index){
+    const eleToDelete = document.getElementById('todo'+index)
+    console.log(eleToDelete, index)
+    document.getElementById("todo").removeChild(eleToDelete)
+    if(count<=0){
+      count = 0
+    }else{
+      count--;
+    }
+  }
+
+  function addTodo(){
+    const usrInput = document.querySelector("#userInput").value
+    const newDiv = document.createElement("div")
+    newDiv.setAttribute('id',`todo${count}`)
+    newDiv.innerHTML = `<h4>${count+1}. ${usrInput}</h4>`+ `<button onclick=deleteTodo(${count})>Delete</button>`
+    document.getElementById("todo").appendChild(newDiv)
+    count++
+  }
+
+
+
+
+</script>
+</body>
+</html>
