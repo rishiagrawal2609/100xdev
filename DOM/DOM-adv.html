@@ -12,9 +12,19 @@
   <input id="userInput">
   <button onclick="addTodo()">Add</button>
 </div>
+
+  <p>The complex way to add todo</p>
+  <div id="ComplexToDo">
+
+  </div>
+  <div>
+      <input id="userInputComplex">
+      <button onclick="complexAddToDo()">Add</button>
+  </div>
 <script>
 
-  let count = 0;
+  let count = 0;;
+  let countComplex=0
 
   function deleteTodo(index){
     const eleToDelete = document.getElementById('todo'+index)
@@ -36,7 +46,32 @@
     count++
   }
 
+  function deleteTodoComplex(index){
+      const eleToDelete = document.getElementById('todoComplex'+index)
+      console.log(eleToDelete, index)
+      document.getElementById("ComplexToDo").removeChild(eleToDelete)
+      if(countComplex<=0){
+          countComplex = 0
+      }else{
+          countComplex--;
+      }
+  }
 
+  // This is a way we can move away from the static HTML to creating the DOM elements
+  function complexAddToDo(){
+      const usrInput = document.querySelector("#userInputComplex").value
+      const span = document.createElement("span")
+      span.innerHTML = usrInput
+      const button = document.createElement("button")
+      button.innerHTML = 'Delete'
+      button.setAttribute('onclick',`deleteTodoComplex(${countComplex})`)
+      const div = document.createElement("div")
+      div.setAttribute('id',`todoComplex${countComplex}`)
+      div.appendChild(span)
+      div.appendChild(button)
+      document.getElementById("ComplexToDo").appendChild(div)
+      countComplex++
+  }
 
 
 </script>

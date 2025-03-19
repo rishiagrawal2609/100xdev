@@ -2,9 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>DOM-ADV-States</title>
 </head>
 <body>
-$END$
+<h1> To-DO list</h1>
+<div id="todo">
+</div>
+<div>
+  <input id="userInput">
+  <button onclick="addTodo()">Add</button>
+</div>
+<script>
+
+
+  let todos = []
+
+  function deleteTodo(index){
+    delete todos[index]
+    render()
+  }
+
+  function render() {
+    document.querySelector("#todo").innerHTML=""
+    for (let i = 0; i <= todos.length; i++) {
+      const usrInput = todos[i].title
+      const span = document.createElement("span")
+      span.innerHTML = usrInput
+      const button = document.createElement("button")
+      button.innerHTML = 'Delete'
+      button.setAttribute('onclick', `deleteTodo(${i})`)
+      const div = document.createElement("div")
+      div.setAttribute('id', `todo${i}`)
+      div.appendChild(span)
+      div.appendChild(button)
+      document.getElementById("todo").appendChild(div)
+    }
+  }
+
+
+
+  function addTodo(){
+    todos.push(
+            {
+              title: document.querySelector("#userInput").value
+            }
+    )
+    render();
+  }
+
+
+
+
+
+
+</script>
 </body>
 </html>
