@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-DO-Assignment</title>
+</head>
+<body style="background-color: lightgreen;">
+    <div id="todo-div"  style="display: flex; justify-content: center; flex-direction: column; background-color: greenyellow; align-items: center; height: 100vh;margin-left: 20vb; margin-right: 20vb;">
+        <h1 style="text-align: center;">To-Do List</h1>
+        <div id="todo-input-div" style="display: flex; justify-content: center; flex-direction: column; background-color: lightblue; align-items: center; padding: 10px; border-radius: 10px;">
+        <input id="userInput" style="padding: 5px; margin: 5px; border-radius: 5px; border: 1px solid black;">
+        <button onclick="addTodo()" style="padding: 5px; margin: 5px; border-radius: 5px; border: 1px solid black;">Add</button>
+        <br>
+        <br>
+        </div>
+        <div id="todo" style="background-color: lightcyan;">
+        </div>
+    </div>
+<script>
+    let count = 0;
+    function deleteTodo(index){
+        const eleToDelete = document.getElementById('todo'+index)
+        console.log(eleToDelete, index)
+        document.getElementById("todo").removeChild(eleToDelete)
+        if(count<=0){
+            count = 0
+        }else{
+            count--;
+        }
+    }
+
+    function addTodo(){
+        const usrInput = document.querySelector("#userInput").value
+        const h4 = document.createElement("h4")
+        h4.innerHTML = `${count+1}. ${usrInput}`
+        h4.style = "padding: 5px; margin: 5px; border-radius: 5px; border: 1px solid black;"
+        const newDiv = document.createElement("div")
+        newDiv.setAttribute('id',`todo${count}`)
+        newDiv.style = "display: flex; justify-content: center; flex-direction: row; background-color: lightblue; align-items: center; padding: 10px; border-radius: 10px;"
+        newDiv.appendChild(h4)
+        const deleteButton = document.createElement("button")
+        deleteButton.innerHTML = "Delete"
+        deleteButton.style = "padding: 5px; margin: 5px; border-radius: 5px; border: 1px solid black;"
+        //deleteButton.onclick = deleteTodo(count)
+        newDiv.appendChild(deleteButton)
+        document.getElementById("todo").appendChild(newDiv)
+        count++
+
+    }
+</script>
+    
+</body>
+</html>
