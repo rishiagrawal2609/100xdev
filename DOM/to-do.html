@@ -30,10 +30,31 @@
             count--;
         }
     }
+    function saveEdit(index){
+        const eleToSave = document.getElementById('todo-h-'+ index)
+        const userInput = document.getElementById(`editInput${index}`).value
+        eleToSave.innerHTML = `${index+1}. ${userInput}`
+    }
+
+    function editTodo(index){
+        const eleToEdit = document.getElementById('todo-h-'+ index)
+        const userInput = document.createElement("input")
+        userInput.setAttribute('id',`editInput${index}`)
+        userInput.style = "padding: 5px; margin: 5px; border-radius: 5px; border: 1px solid black;"
+        const saveButton = document.createElement("button")
+        saveButton.innerHTML = "Save"
+        saveButton.style = "padding: 5px; margin: 5px; border-radius: 5px; border: 1px solid black;"
+        saveButton.setAttribute(`onclick` ,`saveEdit(${index})`)
+        eleToEdit.innerHTML = ""
+        eleToEdit.appendChild(userInput)
+        eleToEdit.appendChild(saveButton)
+        
+    }
 
     function addTodo(){
         const usrInput = document.querySelector("#userInput").value
         const h4 = document.createElement("h4")
+        h4.setAttribute('id',`todo-h-${count}`)
         h4.innerHTML = `${count+1}. ${usrInput}`
         h4.style = "padding: 5px; margin: 5px; border-radius: 5px; border: 1px solid black;"
         const newDiv = document.createElement("div")
@@ -43,8 +64,13 @@
         const deleteButton = document.createElement("button")
         deleteButton.innerHTML = "Delete"
         deleteButton.style = "padding: 5px; margin: 5px; border-radius: 5px; border: 1px solid black;"
-        //deleteButton.onclick = deleteTodo(count)
+        deleteButton.setAttribute(`onclick` ,`deleteTodo(${count})`)
+        const editButton = document.createElement("button")
+        editButton.innerHTML = "Edit"
+        editButton.style = "padding: 5px; margin: 5px; border-radius: 5px; border: 1px solid black;"
+        editButton.setAttribute(`onclick` ,`editTodo(${count})`)
         newDiv.appendChild(deleteButton)
+        newDiv.appendChild(editButton)
         document.getElementById("todo").appendChild(newDiv)
         count++
 
